@@ -25,6 +25,10 @@ It also provides a history panel, delete/rename actions, and a completed-job vie
 
 The server creates `inputs/` and `outputs/` automatically when it starts.
 
+## Downloading this Script
+
+Run `git clone https://github.com/RackS103/AF3_interactive_portal.git` in the server cluster. This command will download this package with this exact file structure into the server.
+
 ## Requesting and Configuring AF3 weights
 
 Follow the instructions on the [AlphaFold3 GitHub page](https://github.com/google-deepmind/alphafold3?tab=readme-ov-file#obtaining-model-parameters) to request/download the model weights. You should obtain a file titled `af3.bin.zst`. Upload this file to the server cluster, then run the following commands in the cluster.
