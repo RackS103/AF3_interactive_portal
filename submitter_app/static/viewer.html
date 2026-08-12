@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AlphaFold3 Result Viewer</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  </head>
+  <body>
+    <main class="viewer-shell">
+      <header class="viewer-header">
+        <a href="/" class="back-link">&larr; Submissions</a>
+        <div>
+          <p class="eyebrow">AlphaFold3 Result</p>
+          <h1 id="viewerTitle">Loading</h1>
+        </div>
+        <div class="metric">
+          <span>ipTM</span>
+          <strong id="iptmValue">--</strong>
+        </div>
+        <div class="viewer-actions">
+          <button id="viewerRename" class="rename-button icon-button" type="button" title="Rename job" aria-label="Rename job">
+            <span aria-hidden="true">&#9998;</span>
+          </button>
+          <button id="viewerDelete" class="delete-button icon-button" type="button" title="Delete job" aria-label="Delete job">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </header>
+
+      <section class="viewer-grid">
+        <div class="structure-area">
+          <div id="structureViewer"></div>
+          <div class="plddt-legend" aria-label="pLDDT scale">
+            <span class="plddt-low">Low</span>
+            <span class="plddt-mid">pLDDT</span>
+            <span class="plddt-high">High</span>
+          </div>
+        </div>
+        <aside class="analysis-area">
+          <section>
+            <h2>PAE</h2>
+            <div id="paeHeatmap" class="heatmap"></div>
+          </section>
+          <section>
+            <h2>Chain-pair ipTM</h2>
+            <div id="chainPairTable" class="score-table"></div>
+          </section>
+        </aside>
+      </section>
+      <p id="viewerError" class="error" role="alert" hidden></p>
+    </main>
+    <script src="/static/viewer.js"></script>
+  </body>
+</html>

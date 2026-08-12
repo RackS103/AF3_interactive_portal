@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AlphaFold3 Submitter</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="submit-panel">
+        <div class="title-row">
+          <div>
+            <p class="eyebrow">AlphaFold3</p>
+            <h1>Submission Applet</h1>
+          </div>
+          <button id="refreshJobs" class="icon-button" type="button" title="Refresh jobs" aria-label="Refresh jobs">
+            <span aria-hidden="true">&#8635;</span>
+          </button>
+        </div>
+
+        <form id="submitForm" class="form-grid">
+          <label class="field">
+            <span>Job name</span>
+            <input id="jobName" name="jobName" autocomplete="off" placeholder="my_complex" required />
+          </label>
+
+          <label class="field">
+            <span>Seeds</span>
+            <input id="seeds" name="seeds" value="1" placeholder="1, 2, 3" />
+          </label>
+
+          <div class="chains-header">
+            <h2>Protein Chains</h2>
+            <button id="addChain" class="secondary-button" type="button">
+              <span aria-hidden="true">+</span>
+              Add chain
+            </button>
+          </div>
+
+          <div id="chains"></div>
+
+          <p id="errorBox" class="error" role="alert" hidden></p>
+          <p id="successBox" class="success" role="status" hidden></p>
+
+          <button id="submitButton" class="primary-button" type="submit">
+            Submit / Run
+          </button>
+        </form>
+      </section>
+
+      <section class="jobs-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">History</p>
+            <h2>Previous Runs</h2>
+          </div>
+        </div>
+        <div id="jobsList" class="jobs-list"></div>
+      </section>
+    </main>
+
+    <template id="chainTemplate">
+      <div class="chain-card">
+        <div class="chain-top">
+          <label class="field compact">
+            <span>Label</span>
+            <input class="chain-label" placeholder="Chain" />
+          </label>
+          <label class="field copies-field">
+            <span>Copies</span>
+            <input class="chain-copies" type="number" min="1" max="99" value="1" />
+          </label>
+          <button class="remove-chain icon-button" type="button" title="Remove chain" aria-label="Remove chain">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <label class="field">
+          <span>Sequence</span>
+          <textarea class="chain-sequence" rows="5" spellcheck="false" placeholder="PVLSCGEWQL"></textarea>
+        </label>
+        <p class="chain-error" hidden></p>
+      </div>
+    </template>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

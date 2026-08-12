@@ -1,0 +1,3 @@
+# First non-empty, non-comment line is used as the AF3 model weights directory.
+# Edit this for your cluster/user account.
+~/af3_weights
