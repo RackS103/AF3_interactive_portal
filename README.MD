@@ -1,6 +1,6 @@
 # AlphaFold3 Submitter Applet
 
-A small local web app for preparing AlphaFold3 protein-only JSON inputs and submitting them to SLURM.
+A small local web app for preparing AlphaFold3 protein-only JSON inputs and submitting them to SLURM. This version is customized for the [MIT Engaging/ORCD cluster](https://orcd-docs.mit.edu/recipes/af3/) for now. I will later work on making a more universal/customizable version for other server systems.
 
 The app creates one timestamped run folder per submission:
 
@@ -24,6 +24,20 @@ It also provides a history panel, delete/rename actions, and a completed-job vie
 ```
 
 The server creates `inputs/` and `outputs/` automatically when it starts.
+
+## Requesting and Configuring AF3 weights
+
+Follow the instructions on the [AlphaFold3 GitHub page](https://github.com/google-deepmind/alphafold3?tab=readme-ov-file#obtaining-model-parameters) to request/download the model weights. You should obtain a file titled `af3.bin.zst`. Upload this file to the server cluster, then run the following commands in the cluster.
+
+```
+cd $WORKDIR
+zstd -d af3.bin.zst
+mkdir models
+mv af3.bin models
+rm af3.bin.zst
+```
+
+Place the resulting `af3.bin` weights file in some nice folder location. You will need to provide this package the path to your AF3 weights directory as instructed below.
 
 ## Configure
 
